@@ -16,30 +16,11 @@ command! -bang -nargs=? -complete=dir AllFiles
 
 
 nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>F :AllFiles<CR>
 nnoremap <silent> <Leader>ls :Buffers<CR>
-nnoremap <silent> <Leader>H :History<CR>
+nnoremap <silent> <Leader>h :History<CR>
+nnoremap <silent> <D-E> :History<CR>
 " nnoremap <leader>H :exec "History ".expand("<cword>")<cr>
 nmap <leader>r :Rg<cr>
 nmap <leader>R :Rg<space>
 nmap <leader>gb :GBranches<cr>
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-"
-" nnoremap <leader>a :Rg<space>
-" nnoremap <leader>A :exec "Rg ".expand("<cword>")<cr>
-
-autocmd VimEnter * command! -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)

@@ -66,66 +66,10 @@ function! s:nerdtreeBookmarks()
     let bookmarks = bookmarks[0:-2] " Slices an empty last line
     return map(bookmarks, "{'line': v:val, 'path': v:val}")
 endfunction
-" let g:startify_lists = [
-"         \ { 'type': 'files',     'header': ['   Recent Files']            },
-"         \ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
-"         \ { 'type': 'sessions',  'header': ['   Sessions']       },
-"         \ { 'type': function('s:nerdtreeBookmarks'), 'header': ['   Bookmarks']      },
-"         \ ]
 
-" ===
-" === php.vim
-" ===
-let g:php_version_id = 70408
-let php_var_selector_is_identifier = 1
-
-" ===
-" === ncm2
-" ===
-" enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
 
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <C-C> <ESC>
-
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" wrap existing omnifunc
-" Note that omnifunc does not run in background and may probably block the
-" editor. If you don't want to be blocked by omnifunc too often, you could
-" add 180ms delay before the omni wrapper:
-"  'on_complete': ['ncm2#on_complete#delay', 180,
-"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-au User Ncm2Plugin call ncm2#register_source({
-        \ 'name' : 'css',
-        \ 'priority': 9,
-        \ 'subscope_enable': 1,
-        \ 'scope': ['css','scss'],
-        \ 'mark': 'css',
-        \ 'word_pattern': '[\w\-]+',
-        \ 'complete_pattern': ':\s*',
-        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-        \ })
-
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-
-" ag
-let g:ackprg = 'ag --vimgrep'
 
 
 
@@ -151,48 +95,28 @@ call plug#begin(stdpath('data') . '/plugged')
     source ~/.config/nvim/plugins/exchange.vim
     source ~/.config/nvim/plugins/firenvim.vim
     source ~/.config/nvim/plugins/fugitive.vim
+    source ~/.config/nvim/plugins/lastplace.vim
+    source ~/.config/nvim/plugins/lion.vim
+    source ~/.config/nvim/plugins/markdown-preview.vim
+    source ~/.config/nvim/plugins/peekaboo.vim
+    source ~/.config/nvim/plugins/phpactor.vim
+    source ~/.config/nvim/plugins/projectionist.vim
+    source ~/.config/nvim/plugins/quickscope.vim
+    source ~/.config/nvim/plugins/repeat.vim
+    " source ~/.config/nvim/plugins/rooter.vim
+    source ~/.config/nvim/plugins/smooth-scroll.vim
+    source ~/.config/nvim/plugins/splitjoin.vim
+    source ~/.config/nvim/plugins/targets.vim
+    source ~/.config/nvim/plugins/textobj-xmlattr.vim
+    source ~/.config/nvim/plugins/unimpaired.vim
+    source ~/.config/nvim/plugins/visual-star-search.vim
+    source ~/.config/nvim/plugins/which-key.vim
 
     " Track the engine.
     Plug 'SirVer/ultisnips' | Plug 'phux/vim-snippets'
 
     " Snippets are separated from the engine. Add this if you want them:
     Plug 'honza/vim-snippets' 
-
-
-
-    "
-    " Plug 'amiorin/vim-project'
-
-    "
-    Plug 'mhinz/vim-startify'
-
-    "
-    Plug 'StanAngeloff/php.vim'
-
-    "
-    Plug 'stephpy/vim-php-cs-fixer'
-
-     " assuming you're using vim-plug: https://github.com/junegunn/vim-plug
-    Plug 'ncm2/ncm2'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-
-    " NOTE: you need to install completion sources to get completions. Check
-    " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-path'
-    Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
-
-    " ack search  :Ack! 'foo bar' ~/Code/laravel-7
-    Plug 'mileszs/ack.vim'
-
-    " neomake
-    Plug 'neomake/neomake'
-
-    " refactoring
-    Plug 'adoy/vim-php-refactoring-toolbox'
-
-
 
 call plug#end()
 
