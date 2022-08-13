@@ -13,7 +13,7 @@ source ~/.vimrc
 " ===
 "set clipboard=unnamedplus
 let &t_ut=''
-set autochdir
+" set autochdir
 
 " ===
 " === window
@@ -111,6 +111,7 @@ call plug#begin(stdpath('data') . '/plugged')
     source ~/.config/nvim/plugins/unimpaired.vim
     source ~/.config/nvim/plugins/visual-star-search.vim
     source ~/.config/nvim/plugins/which-key.vim
+    source ~/.config/nvim/plugins/phpcd.vim
 
     " Track the engine.
     Plug 'SirVer/ultisnips' | Plug 'phux/vim-snippets'
